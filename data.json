@@ -1,18 +1,1 @@
-{
-   "incomes":[{
-        "name" : "Gaji Bulan",
-        "total" : 5000000,
-        "category" : "income"
-    },{
-        
-            "name" : "Gaji Freelance",
-            "total" : 2500000,
-            "category" : "income"
-    }],
-    
-    "expenses":[{
-        "name" : "Tunggakan Motor",
-        "total" : 4000000,
-        "category": "expense"
-     }]
-}
+{"incomes":[{"name":"Gaji Bulan","total":5000000,"category":"income"},{"name":"Gaji Freelance","total":2500000,"category":"income"},{"name":"gaji lembur","total":3000000},{"name":"gaji lembur","total":3000000},{"name":"gaji lembur","total":3000000},{"name":"gaji lembur","total":3000000},{"name":"gaji lembur","total":3000000},{"name":"gaji lembur","total":3000000},{"name":"gaji lembur","total":3000000},{"name":"gaji lembur","total":3000000},{"name":"gaji lembur","total":3000000},{"name":"gaji lembur","total":3000000}],"expenses":[{"name":"Tunggakan Motor","total":4000000,"category":"expense"},{"name":"Cicilan Rumah","total":4000000},{"name":"Cicilan Rumah","total":4000000},{"name":"Cicilan Rumah","total":4000000},{"name":"Cicilan Rumah","total":4000000},{"name":"Cicilan Rumah","total":4000000},{"name":"Cicilan Rumah","total":4000000},{"name":"Cicilan Rumah","total":4000000},{"name":"Cicilan Rumah","total":4000000},{"name":"Cicilan Rumah","total":4000000}]}

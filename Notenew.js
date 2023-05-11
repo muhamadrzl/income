@@ -2,28 +2,29 @@ const { Income, Expense } = require('./IncomeExpense')
 const fs = require('fs')
 const data = './data.json'
 class Note{
-    // constructor(list){
-    //     this.list = list || [];
-    // }
-
     static addIncome(name, total){
-        let income = JSON.parse(fs.readFileSync(data, 'utf-8'))
+        let datajson = JSON.parse(fs.readFileSync(data, 'utf-8'))
         let newIncome = new Income(name, total)
-        income.incomes.push(newIncome)
-        console.log(income.incomes)
-        return JSON.stringify(fs.writeFileSync(income.incomes),'utf-8')
+        datajson.incomes.push(newIncome)
+        this.save(JSON.stringify(datajson))
     }
 
-    addExpense(name, total){
-        let expense = new Expense(name, total, 'expense')
-        this.list.push(expense)
+    static save(newdata){
+        fs.writeFileSync(data, newdata)
+    }
+
+    static addExpense(name, total){
+        let datajson = JSON.parse(fs.readFileSync(data, 'utf-8'))
+        let newExpense = new Expense(name, total)
+        datajson.expenses.push(newExpense)
+        this.save(JSON.stringify(datajson))
     }
 
     static listIncome(){
         console.log('Income List:')
-        let income = JSON.parse(fs.readFileSync(data, 'utf-8'))
-        income.incomes.forEach((x)=>{
-                const {name, total, category} = x
+        let datajson = JSON.parse(fs.readFileSync(data, 'utf-8'))
+        datajson.incomes.forEach((x)=>{
+                const {name, total} = x
                 console.log(`${name}, ${total}`)
             }
         )
@@ -31,23 +32,22 @@ class Note{
 
     static listExpense(){
         console.log('Expense List:')
-        let income = JSON.parse(fs.readFileSync(data, 'utf-8'))
-        income.expenses.forEach((x)=>{
-                const {name, total, category} = x
+        let datajson = JSON.parse(fs.readFileSync(data, 'utf-8'))
+        datajson.expenses.forEach((x)=>{
+                const {name, total} = x
                 console.log(`${name}, ${total}`)
             }
         )
     }
-    balance(){
-        let expenseTotal = 0
-        let incomeTotal = 0
-        this.list.forEach((inc)=>{
-            if(inc.category==='income'){
-                incomeTotal += inc.total;
-            }else{
-                expenseTotal += inc.total;
-            }
-        })
+    static balance(){
+        let datajson = JSON.parse(fs.readFileSync(data, 'utf-8'))
+        console.log(datajson)
+        // let expenseTotal = 0
+        // let incomeTotal = 0
+        let expenseTotal = datajson.expenses.reduce((total,exp)=> total += exp.total,0)
+        let incomeTotal = datajson.incomes.reduce((total,inc)=> total += inc.total,0)
+        console.log(expenseTotal)
+        console.log(incomeTotal)
         let diff = incomeTotal-expenseTotal
         let balanced
         if (diff === 0){
